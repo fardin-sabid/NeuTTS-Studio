@@ -1,0 +1,14 @@
+# Create .gitkeep in every directory
+touch .gitkeep
+touch core/.gitkeep
+touch modules/.gitkeep
+touch data/.gitkeep
+touch data/models/.gitkeep
+touch data/outputs/.gitkeep
+touch data/voices/.gitkeep
+touch data/samples/.gitkeep
+touch .github/.gitkeep
+touch .github/ISSUE_TEMPLATE/.gitkeep
+touch .github/workflows/.gitkeep
+touch tests/.gitkeep  # if you have tests folder
+touch docs/.gitkeep   # if you have docs folder

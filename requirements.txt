@@ -1,0 +1,34 @@
+# NeuTTS Studio — Requirements
+# Install with: pip install -r requirements.txt
+
+# Core TTS Engine
+neutts[all]                    # NeuTTS with all backends
+
+# Audio Processing
+librosa
+soundfile
+resampy
+audioread
+
+# Machine Learning
+torch
+transformers
+numpy
+
+# Voice Cloning & Codec
+neucodec
+phonemizer
+resemble-perth
+
+# Utilities
+tqdm
+typing-extensions
+
+# Optional: Streaming Playback
+# pyaudio  # Uncomment for live audio output
+
+# Optional: Fine-tuning
+# datasets
+# omegaconf
+# fire
+# loguru

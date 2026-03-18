@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 README & Documentation
+    url: https://github.com/fardin-sabid/NeuTTS-Studio#readme
+    about: Check the README first for installation and troubleshooting guides
+  - name: 💬 GitHub Discussions
+    url: https://github.com/YOUR_USERNAME/NeuTTS-Studio/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 🐍 Original NeuTTS Repository
+    url: https://github.com/neuphonic/neutts
+    about: For issues with the underlying TTS models or NeuCodec
+  - name: 🌐 Neuphonic Website
+    url: https://neuphonic.com
+    about: Learn more about the company behind NeuTTS

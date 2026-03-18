@@ -1,0 +1,81 @@
+# NeuTTS Studio — Development Dependencies
+# Install with: pip install -r requirements-dev.txt
+
+# Testing
+pytest
+pytest-cov
+pytest-xdist
+pytest-mock
+pytest-timeout
+
+# Code Quality
+black
+isort
+flake8
+flake8-docstrings
+flake8-bugbear
+pylint
+mypy
+pyright
+bandit
+safety
+
+# Pre-commit
+pre-commit
+
+# Documentation
+sphinx
+sphinx-rtd-theme
+myst-parser
+
+# Profiling and Debugging
+memory-profiler
+py-spy
+snakeviz
+
+# Code Coverage
+coverage
+coveralls
+
+# Type Stubs
+types-requests
+types-PyYAML
+types-setuptools
+
+# Build Tools
+build
+twine
+wheel
+
+# Jupyter for notebooks (optional)
+jupyter
+ipykernel
+ipywidgets
+matplotlib
+
+# Monitoring
+psutil
+gpustat
+
+# LSP (for editors)
+python-lsp-server
+pylsp-mypy
+pylsp-black
+pylsp-isort
+
+# Git hooks
+gitpython
+
+# Performance benchmarking
+asv
+pytest-benchmark
+
+# Logging (for development)
+loguru
+rich
+
+# All optional features (for testing)
+pyaudio
+datasets
+omegaconf
+fire

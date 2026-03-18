@@ -1,0 +1,53 @@
+# ============ IGNORE ONLY THESE ============
+
+# Python cache (never needed)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments (never needed)
+ai-env/
+dev-env/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+*.venv
+
+# Build artifacts (never needed)
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Logs and temp files (never needed)
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# OS garbage (never needed)
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files (never needed)
+.vscode/
+.idea/
+*.iml
+
+# HuggingFace cache (never needed)
+.huggingface/
+.cache/
+
+# Termux specific (never needed)
+.storage/
+termux-backup/
