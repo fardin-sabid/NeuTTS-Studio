@@ -1,80 +1,74 @@
 <div align="center">
 
-# 🎙️ NeuTTS Studio
+<!-- Animated Header Banner -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,4&height=200&section=header&text=NeuTTS%20Studio&fontSize=50&fontColor=fff&animation=twinkling&fontAlignY=35&desc=On-Device%20TTS%20·%20Voice%20Cloning%20·%20Real-Time%20Streaming&descAlignY=55&descSize=18" width="100%"/>
 
-```diff
-+ ███╗   ██╗████████╗███████╗
-+ ████╗  ██║╚══██╔══╝██╔════╝
-+ ██╔██╗ ██║   ██║   ███████╗
-+ ██║╚██╗██║   ██║   ╚════██║
-+ ██║ ╚████║   ██║   ███████║
-+ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝
-       
-+       ⚡ NeuTTS Studio ⚡
-```
+<!-- Typing Animation -->
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=00D2FF&center=true&vCenter=true&width=700&lines=Text-to-Speech+for+Everyone;Voice+Cloning+·+Fine-Tuning+·+Streaming;No+Terminal+Expertise+Required;Works+on+Android+·+iOS+·+Linux+·+macOS" alt="Typing SVG" />
+</a>
+
+<br/>
+
+<!-- Badges Row 1 -->
+[![Platforms](https://img.shields.io/badge/Supported%20Platforms-6-blueviolet?style=for-the-badge&logo=android&logoColor=white)](.)
+[![Models](https://img.shields.io/badge/Models-Q4%20%7C%20Q8%20%7C%20SafeTensors-ff69b4?style=for-the-badge&logo=huggingface&logoColor=white)](.)
+[![Downloads](https://img.shields.io/badge/Audio%20Output-WAV%20%7C%20Streaming-orange?style=for-the-badge&logo=audacity&logoColor=white)](.)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge&logo=open-source-initiative&logoColor=white)](LICENSE)
+
+<br/>
+
+<!-- Badges Row 2 -->
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Android](https://img.shields.io/badge/Android-Optimised-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://android.com)
+[![iOS](https://img.shields.io/badge/iSH-Supported-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com)
+[![Linux](https://img.shields.io/badge/Linux-Ready-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://kernel.org)
+[![macOS](https://img.shields.io/badge/macOS-Supported-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com)
+[![WSL2](https://img.shields.io/badge/WSL2-Compatible-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com)
+[![Raspberry Pi](https://img.shields.io/badge/Pi-Ready-C51A4A?style=for-the-badge&logo=raspberry-pi&logoColor=white)](https://raspberrypi.com)
+
+<br/>
+
+<!-- Quote -->
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical" width="100%"/>
+
+</div>
 
 > **The original NeuTTS** is built for researchers and developers.  
 > **NeuTTS Studio** is built for everyone — especially mobile users.
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Android](https://img.shields.io/badge/Android-Optimised-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://android.com)
-[![iOS](https://img.shields.io/badge/iOS-Optimised-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com)
-[![Linux](https://img.shields.io/badge/Linux-Ready-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://kernel.org)
-[![macOS](https://img.shields.io/badge/macOS-Supported-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com)
-[![Windows](https://img.shields.io/badge/Windows-WSL2-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com)
-[![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-Ready-C51A4A?style=for-the-badge&logo=raspberry-pi&logoColor=white)](https://raspberrypi.com)
-[![NeuTTS](https://img.shields.io/badge/Powered%20by-NeuTTS%20Nano-FF6B6B?style=for-the-badge)](https://github.com/neuphonic/neutts)
-[![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
-
-</div>
+---
 
 ## 📌 Table of Contents
 
-- [Why I Built This](#-why-i-built-this)
-- [Credits & Attribution](#-credits--attribution)
-- [Platform Support](#-platform-support)
-- [Model Recommendations](#-model-recommendations)
-- [Features](#-features)
-- [Smart Chunking](#-smart-chunking--unlimited-text-length)
-- [Project Structure](#-project-structure)
-- [Installation Guides](#-installation-guides)
-  - [Android (Termux + Ubuntu)](#-android--termux--ubuntu-)
-  - [iOS (iSH)](#-ios-ish)
-  - [Linux](#-linux)
-  - [macOS](#-macos)
-  - [Windows (WSL2)](#-windows-wsl2)
-  - [Raspberry Pi](#-raspberry-pi)
-- [How to Use](#-how-to-use)
-- [A-to-Z Troubleshooting](#-a-to-z-troubleshooting)
-- [Responsible Use](#-responsible-use)
-- [License](#-license)
-- [Links](#-links)
+[![Why I Built This](https://img.shields.io/badge/Why_I_Built_This-📖-blue?style=flat-square)](#-why-i-built-this)
+[![Credits](https://img.shields.io/badge/Credits-👏-purple?style=flat-square)](#-credits--attribution)
+[![Platform Support](https://img.shields.io/badge/Platform_Support-📱-green?style=flat-square)](#-platform-support)
+[![Model Recommendations](https://img.shields.io/badge/Model_Recs-👍-orange?style=flat-square)](#-model-recommendations)
+[![Features](https://img.shields.io/badge/Features-✨-yellow?style=flat-square)](#-features)
+[![Smart Chunking](https://img.shields.io/badge/Smart_Chunking-🧠-cyan?style=flat-square)](#-smart-chunking--unlimited-text-length)
+[![Project Structure](https://img.shields.io/badge/Project_Structure-🗂️-gray?style=flat-square)](#-project-structure)
+[![Installation](https://img.shields.io/badge/Installation-📦-red?style=flat-square)](#-installation-guides)
+[![How to Use](https://img.shields.io/badge/How_to_Use-🚀-brightgreen?style=flat-square)](#-how-to-use)
+[![Troubleshooting](https://img.shields.io/badge/Troubleshooting-🔧-lightgrey?style=flat-square)](#-a-to-z-troubleshooting)
+[![Responsible Use](https://img.shields.io/badge/Responsible_Use-🔒-darkgreen?style=flat-square)](#-responsible-use)
+[![License](https://img.shields.io/badge/License-📄-blueviolet?style=flat-square)](#-license)
+[![Links](https://img.shields.io/badge/Links-🌐-pink?style=flat-square)](#-links)
 
 ---
 
 ## 📌 Why I Built This
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=neuphonic&repo=neutts&theme=radical&show_owner=true" width="45%"/>
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=fardin-sabid&repo=NeuTTS-Studio&theme=tokyonight&show_owner=true" width="45%"/>
+</div>
 
 The original [NeuTTS](https://github.com/neuphonic/neutts) by **Neuphonic** is an incredible open-source project — state-of-the-art text-to-speech that runs on-device. But it was built for developers who are comfortable with command-line flags and technical setups.
 
 I asked myself: *"Why should only developers get to use this?"*
 
 So I reverse-engineered the interface to create a **user-friendly shell** that anyone can use — no terminal expertise required. Just pick numbers from a menu and go.
-
-**What the original looks like:**
-```bash
-python -m examples.basic_example \
-  --input_text "Hello world" \
-  --ref_audio ./samples/jo.wav \
-  --ref_text ./samples/jo.txt \
-  --backbone neuphonic/neutts-nano-q4-gguf \
-  --output_path ./output.wav
-```
-
-**What NeuTTS Studio looks like:**
-```bash
-python run.py
-# Then just pick numbers from a menu!
-```
 
 | Original NeuTTS | NeuTTS Studio |
 |-----------------|---------------|
@@ -94,8 +88,6 @@ python run.py
 > ⚠️ **This project does NOT claim ownership of any AI model.**
 
 All TTS models, the NeuCodec audio codec, and the core inference engine are the intellectual property of **[Neuphonic](https://neuphonic.com)**.
-
-NeuTTS Studio is purely an **interface layer** — a user-friendly shell built around their open-source work. The models have not been modified, retrained, or redistributed in any way.
 
 | Component | Owner | License |
 |---|---|---|
