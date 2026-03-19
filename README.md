@@ -4,9 +4,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,4&height=200&section=header&text=NeuTTS%20Studio&fontSize=50&fontColor=fff&animation=twinkling&fontAlignY=35&desc=On-Device%20TTS%20·%20Voice%20Cloning%20·%20Real-Time%20Streaming&descAlignY=55&descSize=18" width="100%"/>
 
 <!-- Typing Animation -->
-<a href="https://readme-typing-svg.demolab.com">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=00D2FF&center=true&vCenter=true&width=700&lines=Text-to-Speech+for+Everyone;Voice+Cloning+·+Fine-Tuning+·+Streaming;No+Terminal+Expertise+Required;Works+on+Android+·+iOS+·+Linux+·+macOS" alt="Typing SVG" />
-</a>
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1000&color=00D2FF&center=true&vCenter=true&width=700&lines=Text-to-Speech+for+Everyone;Voice+Cloning+·+Fine-Tuning+·+Streaming;No+Terminal+Expertise+Required;Works+on+Android+·+iOS+·+Linux+·+macOS;From+Bangladesh+🌍+for+the+World)](https://git.io/typing-svg)
 
 <br/>
 
