@@ -1,40 +1,489 @@
-# 🎙️ NeuTTS Studio
-
 <div align="center">
 
-```
-███╗ ██╗████████╗███████╗
-████╗ ██║╚══██╔══╝██╔════╝
-██╔██╗ ██║ ██║ ███████╗
-██║╚██╗██║ ██║ ╚════██║
-██║ ╚████║ ██║ ███████║
-╚═╝ ╚═══╝ ╚═╝ ╚══════╝
-       NeuTTS Studio
-```
+# 🎙️ NeuTTS Studio
 
-### 🎙️ On-Device Text-to-Speech · Voice Cloning · Real-Time Streaming · Fine-Tuning
+<style>
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
 
-<br>
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 60px rgba(138, 43, 226, 0.5); }
+  100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); }
+}
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Android](https://img.shields.io/badge/Android-Optimised-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://android.com)
-[![iOS](https://img.shields.io/badge/iOS-Optimised-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com)
-[![Linux](https://img.shields.io/badge/Linux-Ready-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://kernel.org)
-[![macOS](https://img.shields.io/badge/macOS-Supported-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com)
-[![Windows](https://img.shields.io/badge/Windows-WSL2-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com)
-[![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-Ready-C51A4A?style=for-the-badge&logo=raspberry-pi&logoColor=white)](https://raspberrypi.com)
-[![NeuTTS](https://img.shields.io/badge/Powered%20by-NeuTTS%20Nano-FF6B6B?style=for-the-badge)](https://github.com/neuphonic/neutts)
-[![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
+@keyframes borderFlow {
+  0% { border-color: #00ffff; }
+  33% { border-color: #8a2be2; }
+  66% { border-color: #4d4dff; }
+  100% { border-color: #00ffff; }
+}
 
-<br>
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-> **The original NeuTTS is built for researchers and developers.**
-> **NeuTTS Studio is built for everyone — especially mobile users.**
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
 
-<br>
+.futuristic-container {
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+  border: 2px solid;
+  border-image: linear-gradient(45deg, #00ffff, #8a2be2, #4d4dff) 1;
+  border-radius: 30px;
+  padding: 40px 30px;
+  max-width: 800px;
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+  animation: glowPulse 4s ease-in-out infinite, borderFlow 6s linear infinite;
+}
 
+.neu-logo {
+  font-size: 5em;
+  font-weight: 900;
+  background: linear-gradient(90deg, #00ffff, #8a2be2, #4d4dff, #00ffff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 5s ease infinite, float 6s ease-in-out infinite;
+  letter-spacing: 4px;
+  margin: 10px 0;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.studio-text {
+  font-size: 2em;
+  font-weight: 600;
+  background: linear-gradient(90deg, #8a2be2, #4d4dff, #00ffff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite reverse;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.feature-card {
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 20px 10px;
+  backdrop-filter: blur(5px);
+  animation: float 5s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: #00ffff;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.feature-icon {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.feature-title {
+  color: white;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 10px 0;
+  background: linear-gradient(90deg, #00ffff, #8a2be2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.feature-status {
+  color: #4dff4d;
+  font-size: 0.9em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* MODEL SELECTOR - ALL 3 MODELS */
+.model-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.model-title {
+  color: #00ffff;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: pulse 2s ease-in-out infinite;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.model-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.model-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid;
+  border-radius: 20px;
+  padding: 20px 25px;
+  min-width: 180px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+.model-card:nth-child(1) { 
+  border-color: #00ffff; 
+  animation-delay: 0s;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+.model-card:nth-child(2) { 
+  border-color: #8a2be2; 
+  animation-delay: 0.2s;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+.model-card:nth-child(3) { 
+  border-color: #4d4dff; 
+  animation-delay: 0.4s;
+  box-shadow: 0 0 20px rgba(77, 77, 255, 0.3);
+}
+
+.model-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px currentColor;
+}
+
+.model-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.model-card:nth-child(1) .model-name { color: #00ffff; text-shadow: 0 0 15px #00ffff; }
+.model-card:nth-child(2) .model-name { color: #8a2be2; text-shadow: 0 0 15px #8a2be2; }
+.model-card:nth-child(3) .model-name { color: #4d4dff; text-shadow: 0 0 15px #4d4dff; }
+
+.model-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+  margin: 10px 0;
+}
+
+.model-badge {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 30px;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.model-card:nth-child(1) .model-badge { 
+  background: rgba(0, 255, 255, 0.2); 
+  color: #00ffff; 
+  border: 1px solid #00ffff;
+}
+.model-card:nth-child(2) .model-badge { 
+  background: rgba(138, 43, 226, 0.2); 
+  color: #8a2be2; 
+  border: 1px solid #8a2be2;
+}
+.model-card:nth-child(3) .model-badge { 
+  background: rgba(77, 77, 255, 0.2); 
+  color: #4d4dff; 
+  border: 1px solid #4d4dff;
+}
+
+/* PROGRESS BAR */
+.progress-section {
+  margin: 40px 0;
+  text-align: left;
+}
+
+.progress-label {
+  color: #00ffff;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.progress-container {
+  width: 100%;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid;
+  border-image: linear-gradient(90deg, #00ffff, #8a2be2, #4d4dff) 1;
+  border-radius: 30px;
+  padding: 3px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #00ffff, #8a2be2, #4d4dff, #00ffff);
+  background-size: 300% 100%;
+  border-radius: 30px;
+  animation: gradientShift 3s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: 0 0 10px black;
+  box-shadow: 0 0 30px #00ffff;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+}
+
+.progress-speed {
+  color: #00ffff;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0 30px;
+  color: white;
+}
+
+.stat-item {
+  text-align: center;
+  animation: float 4s ease-in-out infinite;
+}
+
+.stat-value {
+  font-size: 2em;
+  font-weight: bold;
+  background: linear-gradient(90deg, #00ffff, #8a2be2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 40px 0 20px;
+}
+
+.cyber-badge {
+  padding: 12px 24px;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid #00ffff;
+  border-radius: 40px;
+  color: #00ffff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  animation: float 4s ease-in-out infinite;
+  backdrop-filter: blur(5px);
+}
+
+.cyber-badge:hover {
+  background: #00ffff;
+  color: black;
+  box-shadow: 0 0 40px #00ffff;
+  transform: scale(1.1);
+  border-color: transparent;
+}
+
+.quote-box {
+  margin: 40px 0 20px;
+  padding: 20px;
+  border-left: 4px solid;
+  border-image: linear-gradient(180deg, #00ffff, #8a2be2) 1;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0 20px 20px 0;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.quote-text {
+  color: white;
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.quote-highlight {
+  color: #00ffff;
+  font-weight: 600;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.footer-icon {
+  font-size: 2em;
+  animation: pulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px #00ffff);
+}
+</style>
+
+<div class="futuristic-container">
+  <div class="neu-logo">
+    NEUTTS
+  </div>
+  
+  <div class="studio-text">
+    STUDIO
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎤</div>
+      <div class="feature-title">Text to Speech</div>
+      <div class="feature-status">● ONLINE</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎧</div>
+      <div class="feature-title">Voice Cloning</div>
+      <div class="feature-status">● READY</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Streaming</div>
+      <div class="feature-status">● ACTIVE</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔧</div>
+      <div class="feature-title">Fine-Tuning</div>
+      <div class="feature-status">● LOADED</div>
+    </div>
+  </div>
+
+  <!-- ALL 3 MODELS SECTION -->
+  <div class="model-section">
+    <div class="model-title">
+      ⚡ AVAILABLE MODELS ⚡
+    </div>
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="model-name">Q4 GGUF</div>
+        <div class="model-desc">Fastest · Lowest Memory</div>
+        <div class="model-desc">⚡ 80-100 tok/s</div>
+        <div class="model-badge">Best for Mobile</div>
+      </div>
+      
+      <div class="model-card">
+        <div class="model-name">Q8 GGUF</div>
+        <div class="model-desc">Balanced · Better Quality</div>
+        <div class="model-desc">⚡ 60-80 tok/s</div>
+        <div class="model-badge">Best for High-End</div>
+      </div>
+      
+      <div class="model-card">
+        <div class="model-name">SafeTensors</div>
+        <div class="model-desc">Best Quality · Finetunable</div>
+        <div class="model-desc">⚡ 150+ tok/s (GPU)</div>
+        <div class="model-badge">Best for Desktop</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-section">
+    <div class="progress-label">
+      ⚡ SYSTEM READY ⚡
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar">
+        ██████████████████████████ 100%
+      </div>
+    </div>
+    <div class="progress-stats">
+      <span>📊 All Models Loaded</span>
+      <span class="progress-speed">⚡ Multi-Model Support</span>
+      <span>💾 Choose Any</span>
+    </div>
+  </div>
+
+  <div class="stats-container">
+    <div class="stat-item">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Models</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">24/7</div>
+      <div class="stat-label">Uptime</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">100%</div>
+      <div class="stat-label">On-Device</div>
+    </div>
+  </div>
+
+  <div class="badge-container">
+    <span class="cyber-badge">Python 3.10+</span>
+    <span class="cyber-badge">Android</span>
+    <span class="cyber-badge">iOS</span>
+    <span class="cyber-badge">Linux</span>
+    <span class="cyber-badge">macOS</span>
+    <span class="cyber-badge">WSL2</span>
+    <span class="cyber-badge">Raspberry Pi</span>
+  </div>
+
+  <div class="quote-box">
+    <p class="quote-text">
+      <span class="quote-highlight">The original NeuTTS</span> is built for researchers and developers.<br>
+      <span class="quote-highlight">NeuTTS Studio</span> is built for everyone — especially mobile users.
+    </p>
+  </div>
+
+  <div class="footer-icons">
+    <span class="footer-icon">🎙️</span>
+    <span class="footer-icon">🎤</span>
+    <span class="footer-icon">⚡</span>
+    <span class="footer-icon">🎧</span>
+    <span class="footer-icon">🔧</span>
+  </div>
 </div>
 
+</div>
 ---
 
 ## 📌 Table of Contents
