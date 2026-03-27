@@ -58,8 +58,18 @@
 ## 📌 Why I Built This
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=neuphonic&repo=neutts&theme=radical&show_owner=true" width="45%"/>
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=fardinsabid&repo=NeuTTS-Studio&theme=tokyonight&show_owner=true" width="45%"/>
+  <a href="https://github.com/neuphonic/neutts">
+    <img src="https://img.shields.io/badge/Original%20NeuTTS-Repository-181717?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+  <a href="https://github.com/fardinsabid/NeuTTS-Studio">
+    <img src="https://img.shields.io/badge/NeuTTS%20Studio-Repository-181717?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=fardinsabid&theme=radical" width="100%"/>
 </div>
 
 The original [NeuTTS](https://github.com/neuphonic/neutts) by **Neuphonic** is an incredible open-source project — state-of-the-art text-to-speech that runs on-device. But it was built for developers who are comfortable with command-line flags and technical setups.
