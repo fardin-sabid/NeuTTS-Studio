@@ -352,7 +352,7 @@ pip install -r requirements.txt
 ### Step 11 — Install llama-cpp-python with OpenBLAS (CRITICAL for ARM)
 ```bash
 CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" \
-pip install "neutts[llama]" --force-reinstall --no-cache-dir
+pip install "neutts[llama]" --force-reinstall
 ```
 
 ### Step 12 — Add sample voices
@@ -366,7 +366,29 @@ data/samples/
 └── juliette.wav + juliette.txt  ← French female
 ```
 
-### Step 13 — Launch! 🚀
+### Step 13 — (Optional) Remove NVIDIA/CUDA packages for CPU-only users
+
+> **⚠️ Important Note for CPU-Only Users:**  
+> Starting with PyTorch 2.4+, the default installation bundles NVIDIA CUDA and related GPU packages even on systems without NVIDIA GPUs. This is due to PyTorch's collaboration with NVIDIA to provide unified wheels that work across both CPU and GPU systems. While convenient for GPU users, this adds ~3-5GB of unnecessary packages for CPU-only installations.
+
+**If you are using a CPU-only system (no NVIDIA GPU), you can safely remove these packages:**
+
+```bash
+pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
+```
+
+**What this command does:**
+- Removes all NVIDIA CUDA toolkit packages that are only useful for GPU acceleration
+- Removes Triton (GPU compiler) which is used by PyTorch for CUDA operations
+- Frees up approximately 3-5GB of disk space
+- Does NOT affect CPU functionality — all TTS features work perfectly without these packages
+
+**Why are these packages installed by default?**  
+PyTorch now distributes "universal" wheels that include both CPU and GPU support to simplify installation for users who might switch between environments. This collaboration between PyTorch and NVIDIA means you get everything in one package, but CPU-only users can safely strip out the GPU-specific components.
+
+**Note for GPU users:** If you have an NVIDIA GPU and want to use CUDA acceleration for faster inference, **DO NOT run this command**. Keep these packages for GPU support.
+
+### Step 14 — Launch! 🚀
 ```bash
 python run.py
 ```
@@ -394,10 +416,20 @@ git clone https://github.com/fardinsabid/NeuTTS-Studio.git
 cd NeuTTS-Studio
 pip install -r requirements.txt
 CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" \
-pip install "neutts[llama]" --force-reinstall --no-cache-dir
+pip install "neutts[llama]" --force-reinstall
 ```
 
-### Step 4 — Launch
+### Step 4 — (Optional) Remove NVIDIA/CUDA packages for CPU-only users
+
+If you're on iOS (which doesn't have NVIDIA GPUs), you can safely remove the unnecessary GPU packages:
+
+```bash
+pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
+```
+
+This frees up valuable storage space on your iOS device while keeping all TTS functionality intact.
+
+### Step 5 — Launch
 ```bash
 python run.py
 ```
@@ -422,7 +454,10 @@ pip install -r requirements.txt
 
 # Optional: For better performance on Linux
 CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" \
-pip install "neutts[llama]" --force-reinstall --no-cache-dir
+pip install "neutts[llama]" --force-reinstall
+
+# (Optional) Remove NVIDIA/CUDA packages if you don't have an NVIDIA GPU
+pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
 
 # Launch
 python run.py
@@ -445,6 +480,10 @@ cd NeuTTS-Studio
 python3 -m venv ai-env
 source ai-env/bin/activate
 pip install -r requirements.txt
+
+# (Optional) Remove NVIDIA/CUDA packages if you don't have an NVIDIA GPU
+# Note: Most Macs use Apple Silicon or Intel GPUs, not NVIDIA
+pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
 
 # For Apple Silicon (M1/M2/M3), this is optimized automatically
 # Launch
@@ -483,7 +522,10 @@ pip install -r requirements.txt
 
 # CRITICAL for Raspberry Pi ARM
 CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" \
-pip install "neutts[llama]" --force-reinstall --no-cache-dir
+pip install "neutts[llama]" --force-reinstall
+
+# (Optional) Remove NVIDIA/CUDA packages (Raspberry Pi doesn't have NVIDIA GPUs)
+pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
 
 # Launch
 python run.py
@@ -706,6 +748,13 @@ apt-get install portaudio19-dev -y
 
 # iOS / Alpine
 apk add portaudio-dev
+```
+
+#### Q: NVIDIA/CUDA packages taking up too much space
+**Cause:** PyTorch's universal wheels include GPU packages.
+```bash
+# Remove all NVIDIA/CUDA packages if you don't have an NVIDIA GPU
+pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
 ```
 
 ---
