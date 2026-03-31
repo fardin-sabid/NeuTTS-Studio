@@ -206,7 +206,7 @@ NeuTTS-Studio/
 │
 ├── 🚀 run.py                    ← Entry point — run this to start
 ├── ⚙️  config.py                 ← All settings, paths, model definitions
-├── 📋 requirements.txt          ← Python dependencies
+├── 📋 requirements.txt          ← Python dependencies (platform-specific)
 ├── 📖 README.md                 ← You are here
 │
 ├── 🧠 core/
@@ -236,9 +236,26 @@ NeuTTS-Studio/
 
 ---
 
-## 🤖 Android Installation (Termux + Ubuntu)
+## 📦 Installation Guides
 
-### ⚠️ IMPORTANT — Read Before Starting
+### 🔧 Before You Start
+
+All platforms require **Python 3.10 or higher**. The installation steps are platform-specific due to different PyTorch requirements:
+
+| Platform | PyTorch Setup |
+|----------|---------------|
+| **Android / iOS / Raspberry Pi** (ARM) | CPU-only PyTorch (no CUDA) |
+| **Linux / Windows WSL2** (x86_64) | Full PyTorch with CUDA (if GPU available) |
+| **macOS** (Apple Silicon) | Native Metal-optimized PyTorch |
+| **macOS** (Intel) | Standard PyTorch |
+
+**The `requirements.txt` file includes a commented line for ARM devices.** Simply uncomment it before installation if you're on ARM.
+
+---
+
+### 🤖 Android Installation (Termux + Ubuntu)
+
+#### ⚠️ IMPORTANT — Read Before Starting
 
 Default Termux uses its own package system (`pkg`) which is **missing many packages** required by NeuTTS Studio such as `libopenblas-dev`, `portaudio19-dev`, `pkg-config`, `cmake` and more.
 
@@ -246,7 +263,7 @@ Default Termux uses its own package system (`pkg`) which is **missing many packa
 
 ---
 
-### Step 0 — Install Termux
+#### Step 0 — Install Termux
 
 **Install Termux from F-Droid** (NOT the Play Store — F-Droid version is actively maintained):
 ```
@@ -293,44 +310,44 @@ ubuntu
 
 ---
 
-### Step 1 — Update system packages
+#### Step 1 — Update system packages
 ```bash
 apt-get update && apt-get upgrade -y
 ```
 
-### Step 2 — Install Python
+#### Step 2 — Install Python
 ```bash
 apt-get install python3 python3-pip python3-venv -y
 python3 --version   # Must be 3.10+
 ```
 
-### Step 3 — Install espeak-ng
+#### Step 3 — Install espeak-ng
 ```bash
 apt-get install espeak-ng -y
 espeak-ng --version   # Must be 1.52+
 ```
 
-### Step 4 — Install build tools
+#### Step 4 — Install build tools
 ```bash
 apt-get install build-essential cmake git pkg-config -y
 ```
 
-### Step 5 — Install OpenBLAS
+#### Step 5 — Install OpenBLAS
 ```bash
 apt-get install libopenblas-dev -y
 ```
 
-### Step 6 — Install PortAudio (for streaming)
+#### Step 6 — Install PortAudio (for streaming)
 ```bash
 apt-get install portaudio19-dev -y
 ```
 
-### Step 7 — Install ffmpeg (for audio conversion)
+#### Step 7 — Install ffmpeg (for audio conversion)
 ```bash
 apt-get install ffmpeg -y
 ```
 
-### Step 8 — Create virtual environment
+#### Step 8 — Create virtual environment
 ```bash
 python3 -m venv ai-env
 source ai-env/bin/activate
@@ -338,24 +355,28 @@ source ai-env/bin/activate
 
 > 💡 Always run `source ai-env/bin/activate` before using the app.
 
-### Step 9 — Clone NeuTTS Studio
+#### Step 9 — Clone NeuTTS Studio
 ```bash
 git clone https://github.com/fardinsabid/NeuTTS-Studio.git
 cd NeuTTS-Studio
 ```
 
-### Step 10 — Install Python dependencies
+#### Step 10 — Install Python dependencies (ARM-specific)
 ```bash
+# Edit requirements.txt to uncomment the ARM PyTorch line
+sed -i 's/^# --index-url/--index-url/' requirements.txt
+
+# Install all dependencies
 pip install -r requirements.txt
 ```
 
-### Step 11 — Install llama-cpp-python with OpenBLAS (CRITICAL for ARM)
+#### Step 11 — Install llama-cpp-python with OpenBLAS (CRITICAL for ARM)
 ```bash
 CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" \
 pip install "neutts[llama]" --force-reinstall
 ```
 
-### Step 12 — Add sample voices
+#### Step 12 — Add sample voices
 Download from [original NeuTTS samples](https://github.com/neuphonic/neutts/tree/main/samples) and copy into `data/samples/`:
 ```
 data/samples/
@@ -366,41 +387,19 @@ data/samples/
 └── juliette.wav + juliette.txt  ← French female
 ```
 
-### Step 13 — (Optional) Remove NVIDIA/CUDA packages for CPU-only users
-
-> **⚠️ Important Note for CPU-Only Users:**  
-> Starting with PyTorch 2.4+, the default installation bundles NVIDIA CUDA and related GPU packages even on systems without NVIDIA GPUs. This is due to PyTorch's collaboration with NVIDIA to provide unified wheels that work across both CPU and GPU systems. While convenient for GPU users, this adds ~3-5GB of unnecessary packages for CPU-only installations.
-
-**If you are using a CPU-only system (no NVIDIA GPU), you can safely remove these packages:**
-
-```bash
-pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
-```
-
-**What this command does:**
-- Removes all NVIDIA CUDA toolkit packages that are only useful for GPU acceleration
-- Removes Triton (GPU compiler) which is used by PyTorch for CUDA operations
-- Frees up approximately 3-5GB of disk space
-- Does NOT affect CPU functionality — all TTS features work perfectly without these packages
-
-**Why are these packages installed by default?**  
-PyTorch now distributes "universal" wheels that include both CPU and GPU support to simplify installation for users who might switch between environments. This collaboration between PyTorch and NVIDIA means you get everything in one package, but CPU-only users can safely strip out the GPU-specific components.
-
-**Note for GPU users:** If you have an NVIDIA GPU and want to use CUDA acceleration for faster inference, **DO NOT run this command**. Keep these packages for GPU support.
-
-### Step 14 — Launch! 🚀
+#### Step 13 — Launch! 🚀
 ```bash
 python run.py
 ```
 
 ---
 
-## 🍎 iOS Installation (iSH)
+### 🍎 iOS Installation (iSH)
 
-### Step 1 — Install iSH from App Store
+#### Step 1 — Install iSH from App Store
 Search: **iSH Shell** → Download → Open
 
-### Step 2 — Setup Alpine Linux
+#### Step 2 — Setup Alpine Linux
 ```bash
 apk update && apk upgrade
 apk add python3 py3-pip cmake build-base git pkgconfig
@@ -410,33 +409,34 @@ apk add openblas-dev
 apk add ffmpeg
 ```
 
-### Step 3 — Clone and install
+#### Step 3 — Clone and install
 ```bash
 git clone https://github.com/fardinsabid/NeuTTS-Studio.git
 cd NeuTTS-Studio
+
+# Create virtual environment
+python3 -m venv ai-env
+source ai-env/bin/activate
+
+# Edit requirements.txt for ARM
+sed -i 's/^# --index-url/--index-url/' requirements.txt
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Install llama-cpp-python with OpenBLAS
 CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" \
 pip install "neutts[llama]" --force-reinstall
 ```
 
-### Step 4 — (Optional) Remove NVIDIA/CUDA packages for CPU-only users
-
-If you're on iOS (which doesn't have NVIDIA GPUs), you can safely remove the unnecessary GPU packages:
-
-```bash
-pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
-```
-
-This frees up valuable storage space on your iOS device while keeping all TTS functionality intact.
-
-### Step 5 — Launch
+#### Step 4 — Launch
 ```bash
 python run.py
 ```
 
 ---
 
-## 🐧 Linux Installation
+### 🐧 Linux Installation (x86_64)
 
 ```bash
 # Install system dependencies
@@ -450,14 +450,12 @@ git clone https://github.com/fardinsabid/NeuTTS-Studio.git
 cd NeuTTS-Studio
 python3 -m venv ai-env
 source ai-env/bin/activate
+
+# Install dependencies (keep --index-url line commented)
 pip install -r requirements.txt
 
-# Optional: For better performance on Linux
-CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" \
+# Optional: For better performance on Linux with NVIDIA GPU
 pip install "neutts[llama]" --force-reinstall
-
-# (Optional) Remove NVIDIA/CUDA packages if you don't have an NVIDIA GPU
-pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
 
 # Launch
 python run.py
@@ -465,8 +463,9 @@ python run.py
 
 ---
 
-## 🍎 macOS Installation
+### 🍎 macOS Installation
 
+#### For Apple Silicon (M1/M2/M3):
 ```bash
 # Install Homebrew if not already installed
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -479,20 +478,23 @@ git clone https://github.com/fardinsabid/NeuTTS-Studio.git
 cd NeuTTS-Studio
 python3 -m venv ai-env
 source ai-env/bin/activate
+
+# Install dependencies (keep --index-url line commented)
 pip install -r requirements.txt
 
-# (Optional) Remove NVIDIA/CUDA packages if you don't have an NVIDIA GPU
-# Note: Most Macs use Apple Silicon or Intel GPUs, not NVIDIA
-pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
-
-# For Apple Silicon (M1/M2/M3), this is optimized automatically
 # Launch
 python run.py
 ```
 
+#### For Intel Mac:
+```bash
+# Same steps as Apple Silicon above
+# PyTorch will install standard x86_64 version
+```
+
 ---
 
-## 🪟 Windows Installation (WSL2)
+### 🪟 Windows Installation (WSL2)
 
 ```powershell
 # In PowerShell (Admin)
@@ -501,12 +503,12 @@ wsl --install -d Ubuntu
 # Restart your computer when prompted
 
 # Open Ubuntu WSL terminal
-# Follow Linux instructions above
+# Follow Linux installation steps above
 ```
 
 ---
 
-## 🥧 Raspberry Pi Installation
+### 🥧 Raspberry Pi Installation
 
 ```bash
 sudo apt update
@@ -518,14 +520,16 @@ git clone https://github.com/fardinsabid/NeuTTS-Studio.git
 cd NeuTTS-Studio
 python3 -m venv ai-env
 source ai-env/bin/activate
+
+# Edit requirements.txt for ARM
+sed -i 's/^# --index-url/--index-url/' requirements.txt
+
+# Install dependencies
 pip install -r requirements.txt
 
 # CRITICAL for Raspberry Pi ARM
 CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" \
 pip install "neutts[llama]" --force-reinstall
-
-# (Optional) Remove NVIDIA/CUDA packages (Raspberry Pi doesn't have NVIDIA GPUs)
-pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
 
 # Launch
 python run.py
@@ -750,11 +754,22 @@ apt-get install portaudio19-dev -y
 apk add portaudio-dev
 ```
 
-#### Q: NVIDIA/CUDA packages taking up too much space
-**Cause:** PyTorch's universal wheels include GPU packages.
+#### Q: PyTorch CUDA error on ARM devices
+**Error:** `OSError: libcudart.so.13: cannot open shared object file`
+
+**Cause:** PyTorch 2.4+ bundles CUDA libraries by default. ARM devices don't have NVIDIA GPUs.
+
+**Fix:** Edit `requirements.txt` and uncomment the ARM line:
 ```bash
-# Remove all NVIDIA/CUDA packages if you don't have an NVIDIA GPU
-pip uninstall -y nvidia-cublas nvidia-cuda-cupti nvidia-cuda-nvrtc nvidia-cuda-runtime nvidia-cudnn-cu13 nvidia-cufft nvidia-cufile nvidia-curand nvidia-cusolver nvidia-cusparse nvidia-cusparselt-cu13 nvidia-nccl-cu13 nvidia-nvjitlink nvidia-nvshmem-cu13 nvidia-nvtx cuda-bindings cuda-pathfinder cuda-toolkit triton
+# Edit requirements.txt
+nano requirements.txt
+
+# Find and uncomment this line (remove the #):
+--index-url https://download.pytorch.org/whl/cpu
+
+# Then reinstall
+pip install --force-reinstall torch
+pip install -r requirements.txt
 ```
 
 ---

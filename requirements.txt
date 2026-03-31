@@ -1,8 +1,16 @@
 # NeuTTS Studio — Requirements
+# 
+# IMPORTANT:
+# - For ARM devices (Android, iOS, Raspberry Pi), uncomment the --index-url line below
+# - For x86_64 with NVIDIA GPU, comment it out
+#
 # Install with: pip install -r requirements.txt
 
+# Uncomment the line below for ARM devices (Android/iOS/Raspberry Pi)
+# --index-url https://download.pytorch.org/whl/cpu
+
 # Core TTS Engine
-neutts[all]                    # NeuTTS with all backends
+neutts[all]
 
 # Audio Processing
 librosa
@@ -25,7 +33,7 @@ tqdm
 typing-extensions
 
 # Optional: Streaming Playback
-# pyaudio  # Uncomment for live audio output
+# pyaudio
 
 # Optional: Fine-tuning
 # datasets
